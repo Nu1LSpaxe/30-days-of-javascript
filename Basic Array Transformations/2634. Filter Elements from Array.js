@@ -13,11 +13,9 @@
  * @param {Function} fn
  * @return {number[]}
  */
-var filter = function(arr, fn) {
-    return arr.flatMap((x, i) => fn(x, i) ? [x] : []);
-};
 
-var filter2 = function(arr, fn) {
+// it's quite strightforward right?
+var filter1 = function(arr, fn) {
     let newArray = [];
     for (var i = 0; i < arr.length; i++) {
         if (fn(arr[i], i)) {
@@ -26,3 +24,11 @@ var filter2 = function(arr, fn) {
     }
     return newArray;
 }
+
+// flatMap() also a pretty clear funciton, it do things this below:
+// flatMap([1, 2, [2, 3, 4], [5, 5, [6, 6, 6]]]) -> delete 'one' [] -> [1, 2, 2, 3, 4, 5, 5, [6, 6, 6]]
+// of course, you can do flatMap() again and let it be 1D array.
+var filter2 = function(arr, fn) {
+    return arr.flatMap((x, i) => fn(x, i) ? [x] : []);
+};
+

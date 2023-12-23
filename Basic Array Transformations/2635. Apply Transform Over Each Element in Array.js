@@ -10,6 +10,8 @@
  * @param {Function} fn
  * @return {number[]}
  */
+
+// iterate every element in array, 'do something' to each element.
 var map = function(arr, fn) {
     for (let i = 0; i < arr.length; i++) {
         arr[i] = fn(arr[i], i)

@@ -12,6 +12,9 @@
  * @param {number} init
  * @return {number}
  */
+
+// reduce() is used to 'do something' to 'initial value', return the result after this process.
+// reduce((accumulator, current) => 'do sth function', initial_value);
 var reduce = function(nums, fn, init) {
     let curr = init;
     for (var i = 0; i < nums.length; i++) {
@@ -20,6 +23,7 @@ var reduce = function(nums, fn, init) {
     return curr;
 };
 
+// reduceRight() -> just from the rightest place start reduce()
 var reduce2 = function(nums, fn, init) {
     return nums.reverse().reduceRight((accum, curr) => fn(accum, curr), init);
 };
