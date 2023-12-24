@@ -25,9 +25,7 @@ var filter1 = function(arr, fn) {
     return newArray;
 }
 
-// flatMap() also a pretty clear funciton, it do things this below:
-// flatMap([1, 2, [2, 3, 4], [5, 5, [6, 6, 6]]]) -> delete 'one' [] -> [1, 2, 2, 3, 4, 5, 5, [6, 6, 6]]
-// of course, you can do flatMap() again and let it be 1D array.
+// flatMap() also a pretty clear funciton, combine flat() and map() together
 var filter2 = function(arr, fn) {
     return arr.flatMap((x, i) => fn(x, i) ? [x] : []);
 };
