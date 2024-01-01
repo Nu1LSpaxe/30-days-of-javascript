@@ -4,9 +4,15 @@
  */
 Array.prototype.groupBy = function(fn) {
     return this.reduce((result, item) => {
-        const key = fn(item);   // use fn(item) as key
-        result.hasOwnProperty(key)? result[key].push(item) : result[key] = [item];  // push(item) if already contains, otherwise new an array contains item (noticeable: [item] has an [] outside to contain item, make it as an array, then we can use method 'push')
-        return result;  // use return to update result for each iteration
+        
+        // use fn(item) as key
+        const key = fn(item);   
+        
+        // push(item) if already contains, otherwise new an array contains item (noticeable: [item] has an [] outside to contain item, make it as an array, then we can use method 'push')
+        result.hasOwnProperty(key)? result[key].push(item) : result[key] = [item];  
+
+        // use return to update result for each iteration
+        return result; 
     }, {})
 };
 

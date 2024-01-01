@@ -11,11 +11,14 @@
  */
 var once = function(fn) {
     let hadCalled = false;
+
     return function(...args){
+
         if (!hadCalled) { 
             hadCalled = true;
             return fn(...args); 
         }
+        
         return undefined;
     }
 };

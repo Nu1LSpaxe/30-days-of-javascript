@@ -23,14 +23,25 @@
  * @return {Function}
  */
 function memoize(fn) {
-  const map = new Map(); // const map = {};
+  // const map = {};
+  const map = new Map(); 
+
   return function (...args) {
-    let key = JSON.stringify(args); // transfer to JSON type as key directly
+    // transfer to JSON type as key directly
+    let key = JSON.stringify(args); 
     if (key in map) return map[key];
-    // map[key] = fn.apply(this, args);
-    // .bind() -> return Function, so need to add '()' after call bind()
-    // map[key] = fn.bind(this, ...args)();
-    map[key] = fn.call(this, ...args); // use input as key to store value
+
+    /**
+     * approaches of apply, bind
+     * map[key] = fn.apply(this, args);
+     * 
+     * .bind() -> return Function, so need to add '()' after call bind()
+     * map[key] = fn.bind(this, ...args)();
+     */
+
+    // use input as key to store value
+    map[key] = fn.call(this, ...args); 
+
     return map[key];
   };
 }

@@ -7,6 +7,7 @@
 // Time Limit Exceeded
 var flat = function (arr, n) {
     for (let i = 0; i < n; i++) arr = arr.flatMap(x => Array.isArray(x) ? [...x] : [x]);
+
     return arr;
 };
 
@@ -19,6 +20,7 @@ var flat2 = function (arr, n) {
         if (n > 0 && Array.isArray(arr[i])) result.push(...flat2(arr[i], n-1));
         else result.push(arr[i]);
     }
+    
     return result;
 };
 

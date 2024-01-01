@@ -5,25 +5,34 @@
  */
 var join = function (arr1, arr2) {
   let arr = arr1.concat(arr2);
+
   const result = arr.reduce((result, item) => {
+
     const existItem = result.get(item.id) || {};
-    result.set(item.id, {...existItem, ...item});
+    result.set(item.id, { ...existItem, ...item });
+
     return result;
   }, new Map());    // Map need extra space
-  return Array.from(result.values()).sort((a, b) => a.id - b.id);  // need .sort() because Map() is unordered
+
+  // need .sort() because Map() is unordered
+  return Array.from(result.values()).sort((a, b) => a.id - b.id);
 };
 
 // much faster than method 1
 var join2 = function (arr1, arr2) {
-    let result = {};    // object is ordered, do not need extra sorting
-    arr1.forEach((item) => {
-        result[item.id] = item;
-    });
-    arr2.forEach(item => {
-        if (result[item.id]) { Object.keys(items).forEach(key => result[item.id][key] = item[key]); }
-        else result[item.id] = item;
-    });
-    return Object.values(result);
+  // object is ordered, do not need extra sorting
+  let result = {};
+
+  arr1.forEach((item) => {
+    result[item.id] = item;
+  });
+
+  arr2.forEach(item => {
+    if (result[item.id]) { Object.keys(items).forEach(key => result[item.id][key] = item[key]); }
+    else result[item.id] = item;
+  });
+
+  return Object.values(result);
 }
 
 arr1 = [{ id: 1, b: { b: 94 }, v: [4, 3], y: 48 }];

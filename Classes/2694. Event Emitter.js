@@ -44,8 +44,10 @@ class EventEmitter {
     emit(eventName, args = []) {
         if (!this.events.has(eventName)) return [];
         const listeners = this.events.get(eventName);
+
         const result = [];
         for (const listener of listeners) result.push(listener(...args));
+
         return result;
     }
 }
